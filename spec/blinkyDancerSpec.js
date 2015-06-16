@@ -6,7 +6,8 @@ describe("blinkyDancer", function() {
 
   beforeEach(function() {
     clock = sinon.useFakeTimers();
-    blinkyDancer = makeBlinkyDancer(10, 20, timeBetweenSteps);
+    //blinkyDancer = makeBlinkyDancer(10, 20, timeBetweenSteps);
+    blinkyDancer = new BlinkyDancer(10, 20, timeBetweenSteps);
   });
 
   it("should have a jQuery $node object", function(){
@@ -32,4 +33,17 @@ describe("blinkyDancer", function() {
       expect(blinkyDancer.step.callCount).to.be.equal(2);
     });
   });
+
+  it('should have an `step` method that is inherited from dancer', function() {
+    expect(blinkyDancer.step).to.be.a('function');
+  });
+
+ it('should have an `setPostition` method that is inherited from dancer', function() {
+    expect(blinkyDancer.setPosition).to.be.a('function');
+  });
+
+ it('should have an `$node` property that is inherited from dancer', function() {
+    expect(blinkyDancer.$node).to.be.a('object');
+  });
+
 });
