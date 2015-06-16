@@ -31,9 +31,17 @@ $(document).ready(function(){
     window.dancers.push(dancer);
   });
   $(".lineup").on("click", function(event){
-    console.log(window.dancers);
     for(var i = 0; i < window.dancers.length; i++){
       window.dancers[i].lineup();
+    }
+  });
+  $(".PkDancerClick").on("click", function(event){
+    console.log(window.dancers);
+    for(var i = 0; i < window.dancers.length; i++){
+      if(window.dancers[i].constructor !== PkDancer){
+        window.dancers[i].lineup();
+        console.log(window.dancers[i])
+      }
     }
   });
   /*$("body").on("click",".dancer",function(event){
