@@ -1,4 +1,4 @@
-var BreakDancer = function(top, left, timeBetweenSteps){
+var DancingBannana = function(top, left, timeBetweenSteps){
   //var BreakDancer = Dancer(top, left, timeBetweenSteps);
   Dancer.call(this, top, left, timeBetweenSteps);
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
@@ -7,26 +7,15 @@ var BreakDancer = function(top, left, timeBetweenSteps){
   //this.oldStep = Dancer.prototype.step.bind(this);
 
   //return BreakDancer;
-  this.$node.addClass("bboy");
-  var closure = this;
-  this.$node.on('mouseover', function(){
-    BreakDancer.prototype.lineup.call(closure);
-  });
+  this.$node.addClass("dancingBannana")
 };
-BreakDancer.prototype = Object.create(Dancer.prototype);
-BreakDancer.prototype.constructor = BreakDancer;
-BreakDancer.prototype.step = function(){
+DancingBannana.prototype = Object.create(Dancer.prototype);
+DancingBannana.prototype.constructor = BreakDancer;
+DancingBannana.prototype.step = function(){
       // call the old version of step at the beginning of any call to this new version of step
-    Dancer.prototype.step.call(this);
+    //Dancer.prototype.step.call(this);
     // toggle() is a jQuery method to show/hide the <span> tag.
     // See http://api.jquery.com/category/effects/ for this and
     // other effects you can use on a jQuery-wrapped html tag.
-    this.$node.toggle();
+    //this.$node.toggle();
 };
-BreakDancer.prototype.lineup = function(){
-  //this.$node.css('height', '150px');
-  this.$node.css({
-    'bottom': '0px',
-    'top': 'auto'
-  });
-}

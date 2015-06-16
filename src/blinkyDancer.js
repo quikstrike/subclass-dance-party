@@ -7,6 +7,10 @@ var BlinkyDancer = function(top, left, timeBetweenSteps){
   //this.oldStep = Dancer.prototype.step.bind(this);
 
   //return blinkyDancer;
+  var closure = this;
+  this.$node.on('mouseover', function(){
+    BlinkyDancer.prototype.lineup.call(closure);
+  });
 };
 BlinkyDancer.prototype = Object.create(Dancer.prototype);
 BlinkyDancer.prototype.constructor = BlinkyDancer;
@@ -18,3 +22,9 @@ BlinkyDancer.prototype.step = function(){
     // other effects you can use on a jQuery-wrapped html tag.
     this.$node.toggle();
 };
+BlinkyDancer.prototype.lineup = function(){
+  //this.$node.css('height', '150px');
+  this.$node.css({
+    'right': '0px',
+    'left': 'auto'});
+}
